@@ -60,7 +60,13 @@ if(BUILD_TESTS)
   target_link_libraries(check ${PROJECT_NAME} GTest::GTest GTest::Main)
   add_test(NAME check COMMAND check)
 endif()
+
 add_executable(demo ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp)
+
 target_link_libraries(demo print)
+
 install(TARGETS demo RUNTIME DESTINATION bin)
+
+add_compile_options(-Wno-error=maybe-uninitialized)
+
 include(CPackConfig.cmake)
